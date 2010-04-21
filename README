@@ -1,0 +1,24 @@
+
+ * CL-FEATURES *
+
+ This library contain:
+
+   * Trivial-features from popular `trivial-features' library.
+
+   * Local features - for creating special lists of features with macro readers.
+
+   * Macroes for detecting features environment
+
+   * Mapping mechanism for variouse features.
+
+ Examples:
+
+   (define-features-list *hunchentoot-features*
+     :documentation "Features list for Hunchentoot. Used with #h+/#h- reader macroes."
+     :macro-character #\h)
+
+   #h+:sbcl (print "This is SBCL backend.")
+
+ **********
+
+This library is not finished yet.
