@@ -12,7 +12,7 @@
  `(progn
     (declaim (type list ,name))
     (defparameter ,name ,value ,documentation)
-    (set-dispatch-macro-character #\# ,macro-character #'h-reader)))
+    (set-dispatch-macro-character #\# ,macro-character #'features-reader)))
 
 ;;; when-* macroes
 
