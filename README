@@ -1,24 +1,21 @@
 
- * CL-FEATURES *
+NAMED-FEATURES
 
- This library contain:
+  This library allow to create special list of features with reader macro.
+Just like *features* with #+/#- readers but separeted.
 
-   * Trivial-features from popular `trivial-features' library.
+EXAMPLE
 
-   * Local features - for creating special lists of features with macro readers.
+  (named-features:define-features-list *my-features*
+   :documentation "My features list. Used with #h+/#h- reader macros."
+   :macro-character #\h)
 
-   * Macroes for detecting features environment
+  (pushnew :sbcl *my-features*)
 
-   * Mapping mechanism for variouse features.
+  #h+sbcl (format t "This is SBCL backend.~%")
 
- Examples:
+  (pushnew :linux *my-features*)
 
-   (define-features-list *hunchentoot-features*
-     :documentation "Features list for Hunchentoot. Used with #h+/#h- reader macroes."
-     :macro-character #\h)
+  #h+(and sbcl linux) (format t "This is SBCL on Linux backend.~%")
 
-   #h+:sbcl (print "This is SBCL backend.")
-
- **********
-
-This library is not finished yet.
+  #h-(and sbcl (not linux)) (format t "This not SBCL not on Linux backend.~%")
